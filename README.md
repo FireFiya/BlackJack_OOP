@@ -1,2 +1,2 @@
-# BlackJack(OOP) ver0.0.1
--並沒有做太多的事情，僅供測試用
+# BlackJack(OOP)
+測試用
