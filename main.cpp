@@ -7,7 +7,7 @@ int main() {
 	cout<<"歡迎來到21點";
 	cout<<"請選擇賠率: ";
 	cout << "請輸入賭金：";
-	而( 1 ) {			//測試
+	while( 1 ) {			//test
 		cout << rand() << endl;
 	}
 }
