@@ -14,5 +14,5 @@ int main() {
 	cin >> odds;
 	cout << "請輸入賭金：" << endl;
 	cin >> bet;
-	cout<<"遊戲結束"<<
+	cout<<"遊戲結束"<<endl;
 }
