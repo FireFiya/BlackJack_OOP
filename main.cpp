@@ -6,15 +6,13 @@ int main() {
 	int money, bet;
 	double odds;
 	srand(time(NULL));
-	cout << "Åwªï¨Ó¨ì21ÂI" << endl;
-	cout << "½Ð¿é¤J½ä¸ê¡G" << endl;
+	cout << "æ­¡è¿Žä¾†åˆ°21é»ž" << endl;
+	cout << "è«‹è¼¸å…¥è³­è³‡ï¼š" << endl;
 	cin >> money;
 	Game game(money);
-	cout << "½Ð¿ï¾Ü½ß²v:(1.2, 1.5, 3.0)" << endl;
+	cout << "è«‹é¸æ“‡è³ çŽ‡:(1.2, 1.5, 3.0)" << endl;
 	cin >> odds;
-	cout << "½Ð¿é¤J½äª÷¡G" << endl;
+	cout << "è«‹è¼¸å…¥è³­é‡‘ï¼š" << endl;
 	cin >> bet;
-	while (1) {
-		cout << rand() << endl;
-	}	//test
+	cout<<"éŠæˆ²çµæŸ"<<
 }
