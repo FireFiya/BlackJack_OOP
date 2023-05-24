@@ -1,2 +1,2 @@
 # BlackJack(OOP)
-測試用
+尚未完工
