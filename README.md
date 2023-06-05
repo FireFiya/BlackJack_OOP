@@ -1,4 +1,4 @@
-# BlackJack(OOP)
+# <center>BlackJack(OOP)</center>
 ## 遊戲介紹
 ### 遊戲規則
 * 此遊戲為單人遊玩，為莊家為電腦，由莊家發牌。
