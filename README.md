@@ -23,4 +23,4 @@
 資工1A
 組別:17
 組長:[B1214352葉哲銘](https://github.com/FireFiya)
-組員:[B1204004陳宇翔]()
+組員:[B1204004陳宇翔](https://github.com/ericchen930101)
