@@ -21,7 +21,6 @@
 ## 程式碼如何安裝執行
 會給予.exe檔，下載後執行即可
 ***
-資工1A<br/>
-組別:17<br/>
+資工1A 組別:17<br/>
 組長:[B1214352葉哲銘](https://github.com/FireFiya)<br/>
 組員:[B1204004陳宇翔](https://github.com/ericchen930101)<br/>
