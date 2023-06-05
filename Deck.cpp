@@ -8,7 +8,7 @@ Deck::Deck() {
     for (int i = 0; i < 52; i++) {
         (cards+i)->print();
         cout << endl;
-    }   //´ú¸Õ¥Î ¥i§R°£
+    }   //æ¸¬è©¦ç”¨ å¯åˆªé™¤
 
     srand(time(NULL));
     Shuffle();
@@ -18,13 +18,13 @@ Deck::Deck() {
         sleep_for(chrono::milliseconds(100));
         (cards + i)->print();
         cout << endl;
-    }   //´ú¸Õ¥Î ¥i§R°£
+    }   //æ¸¬è©¦ç”¨ å¯åˆªé™¤
 }
 
-void Deck::Shuffle() {     //r¬OÀH¾÷ÅÜ¼Æ¡A¥Î¨Ó²£¥Í¥N½X
+void Deck::Shuffle() {
     srand(time(0));
     for (int i = 0; i < 3;i++) {
-        cout << "¬~µP¤¤......" << 3 - i << endl << endl;
+        cout << "æ´—ç‰Œä¸­......" << 3 - i << endl << endl;
         sleep_for(chrono::milliseconds(1000));
     }
     for (int i = 0; i < 1000; ++i) {
