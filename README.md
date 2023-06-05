@@ -1,5 +1,5 @@
 # BlackJack(OOP)
-## 程式介紹
+## 遊戲介紹
 BlackJack
 
 ## 遊戲規則
