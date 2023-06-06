@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.5.1 - Card.h
+//BlackJack(OOP) 0.6.0 - Card.h
 #ifndef C_H
 #define C_H
 #include<iostream>
@@ -7,6 +7,7 @@
 #include<ctime>
 #include<chrono>
 #include<thread>
+#include<cstdlib>
 using namespace std;
 using this_thread::sleep_for;
 class Card {

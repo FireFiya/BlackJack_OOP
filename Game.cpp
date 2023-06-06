@@ -1,4 +1,4 @@
-﻿//BlackJack(OOP) 0.5.1 - Game.cpp
+﻿//BlackJack(OOP) 0.6.0 - Game.cpp
 #include "Game.h"
 
 int Game::cardUsed = 0;
@@ -6,25 +6,22 @@ int Game::Pgot = 0;
 int Game::Dgot = 0;
 
 Game::Game() {
-	this->money = 0;
 	this->bet = 0;
 	this->odds = 0;
 }
 
-Game::Game(int money,int bet,double odds) {
-	this->money = money;
+Game::Game(int bet,double odds) {
 	this->bet = bet;
 	this->odds = odds;
 }
 
 void Game::play() {
-	long long money, bet;
+	long long bet;
 	double odds;
 
 	cout << "歡迎來到21點" << endl;
-	cout << "請輸入賭資：" << endl;
-	cin >> money;
-	system("cls");
+
+	cout << "你擁有" << money << "賭資" << endl;
 
 	cout << "請選擇賠率(1.2, 1.5, 3.0):" << endl;
 	cin >> odds;
@@ -33,26 +30,39 @@ void Game::play() {
 			break;
 		}
 		system("cls");
+		cout << "你擁有" << money << "賭資" << endl;
 		cout << "賠率不正確，請重新選擇賠率(1.2, 1.5, 3.0):" << endl;
 		cin >> odds;
 	}
 	system("cls");
 
+	cout << "你擁有" << money << "賭資" << endl;
+
 	cout << "請輸入賭金：" << endl;
 	cin >> bet;
-	while (bet>money) {
+	while (bet > money) {
 		system("cls");
 		cout << "賭資不足，請重新輸入賭金：" << endl;
 		cin >> bet;
 	}
 	system("cls");
 
-	setMoney(money);
 	setOdds(odds);
 	setBet(bet);
 }
 
-void Game::reset() {//重置卡牌
+void Game::reRound() {
+	Pgot = 0;
+	Dgot = 0;
+	cardUsed = 0;
+	Deck deck;
+	this->deck = deck;
+}
+
+void Game::reset() {//重置
+	setMoney(1000000);
+	setBet(0);
+	setOdds(0);
 	Pgot = 0;
 	Dgot = 0;
 	cardUsed = 0;
@@ -87,17 +97,17 @@ void Game::Shuffle() {
 
 void Game::playerRound() {
 	string ans = "Y";
-	
-	while (ans == "Y" && Pgot != 5) {
+
+	while (ans == "Y" && Pgot != 5 && getPPoint() < 21) {
 		cout << "莊家的明牌:" << endl;
-		deck.getDealer()->print();
+		(deck.getDealer() + 1)->print();
 		cout << endl;
 
 		cout << "你目前的手牌:" << endl;
 		for (int i = 0; i < Pgot; i++) {
 			(deck.getPlayer() + i)->print();
 		}
-		cout << endl;
+		cout << endl <<"當前點數: " << getPPoint() << endl << endl;
 
 		cout << "是否需要取得新卡片(Y/N):" << endl;
 		cin >> ans;
@@ -116,35 +126,245 @@ void Game::playerRound() {
 		}
 	}
 	cout << "莊家的明牌:" << endl;
-	deck.getDealer()->print();
+	(deck.getDealer() + 1)->print();
 	cout << endl;
 
 	cout << "你目前的手牌:" << endl;
 	for (int i = 0; i < Pgot; i++) {
 		(deck.getPlayer() + i)->print();
 	}
-	system("pause");
+
+	cout << endl << "當前點數: " << getPPoint() << endl << endl;
+	system("cls");
 }
 
 void Game::dealerRound() {
+	cout << "莊家目前的手牌:" << endl;
+	for (int i = 0; i < Dgot; i++) {
+		(deck.getDealer() + i)->print();
+	}
+	cout << endl << "莊家的點數: " << getDPoint() << endl << endl << endl;
 
+	cout << "你的手牌:" << endl;
+	for (int i = 0; i < Pgot; i++) {
+		(deck.getPlayer() + i)->print();
+	}
+	cout << endl << "你的點數: " << getPPoint() << endl << endl;
+	system("pause");
+	system("cls");
+
+	if (getPPoint() >= 21) {
+		while (getDPoint() < 17 && Dgot != 5) {
+			deck.giveDCard(Dgot, cardUsed);
+			Dgot++;
+			cardUsed++;
+
+			cout << "莊家目前的手牌:" << endl;
+			for (int i = 0; i < Dgot; i++) {
+				(deck.getDealer() + i)->print();
+			}
+			cout << endl << "莊家的點數: " << getDPoint() << endl << endl;
+
+			cout << "你的手牌:" << endl;
+			for (int i = 0; i < Pgot; i++) {
+				(deck.getPlayer() + i)->print();
+			}
+			cout << endl << "你的點數: " << getPPoint() << endl << endl;
+			system("pause");
+			system("cls");
+		}
+	}
+	else if (getPPoint() < 21) {
+		while (getPPoint() > getDPoint() && Dgot != 5 || getDPoint() < 17) {
+			deck.giveDCard(Dgot, cardUsed);
+			Dgot++;
+			cardUsed++;
+
+			cout << "莊家目前的手牌:" << endl;
+			for (int i = 0; i < Dgot; i++) {
+				(deck.getDealer() + i)->print();
+			}
+			cout << endl << "莊家的點數: " << getDPoint() << endl << endl;
+
+			cout << "你的手牌:" << endl;
+			for (int i = 0; i < Pgot; i++) {
+				(deck.getPlayer() + i)->print();
+			}
+			cout << endl << "你的點數: " << getPPoint() << endl << endl;
+			system("pause");
+			system("cls");
+		}
+	}
+
+	cout << "莊家目前的手牌:" << endl;
+	for (int i = 0; i < Dgot; i++) {
+		(deck.getDealer() + i)->print();
+	}
+	cout << endl << "莊家的點數: " << getDPoint() << endl << endl;
+
+	cout << "你的手牌:" << endl;
+	for (int i = 0; i < Pgot; i++) {
+		(deck.getPlayer() + i)->print();
+	}
+	cout << endl << "你的點數: " << getPPoint() << endl << endl;
+	system("pause");
+	system("cls");
 }
 
-void Game::getPoint() {
+int Game::getPPoint() {
+	int total = 0;
+	int special = 0;
+	for (int i = 0; i < Pgot; i++) {
+		if ((deck.getPlayer() + i)->getSymbol() == "A") {
+			total += 11;
+			special++;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "2") {
+			total += 2;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "3") {
+			total += 3;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "4") {
+			total += 4;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "5") {
+			total += 5;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "6") {
+			total += 6;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "7") {
+			total += 7;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "8") {
+			total += 8;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "9") {
+			total += 9;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "10") {
+			total += 10;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "J") {
+			total += 10;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "Q") {
+			total += 10;
+		}
+		else if ((deck.getPlayer() + i)->getSymbol() == "K") {
+			total += 10;
+		}
 
+		for (int i = 0; i < special; i++) {
+			if (total > 21) {
+				total -= 10;
+			}
+		}
+	}
+	return total;
+}
+
+int Game::getDPoint() {
+	int total = 0;
+	int special = 0;
+	for (int i = 0; i < Dgot; i++) {
+		if ((deck.getDealer() + i)->getSymbol() == "A") {
+			total += 11;
+			special++;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "2") {
+			total += 2;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "3") {
+			total += 3;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "4") {
+			total += 4;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "5") {
+			total += 5;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "6") {
+			total += 6;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "7") {
+			total += 7;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "8") {
+			total += 8;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "9") {
+			total += 9;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "10") {
+			total += 10;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "J") {
+			total += 10;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "Q") {
+			total += 10;
+		}
+		else if ((deck.getDealer() + i)->getSymbol() == "K") {
+			total += 10;
+		}
+
+		for (int i = 0; i < special; i++) {
+			if (total > 21) {
+				total -= 10;
+			}
+		}
+	}
+	return total;
+}
+
+void Game::compare() {
+	if (getPPoint() <= 21 && getDPoint() <= 21) {
+		if (getPPoint() > getDPoint()) {
+			cout << "玩家點數大於莊家 玩家勝利" << endl;
+			win();
+		}
+		else if (getPPoint() < getDPoint()) {
+			cout << "莊家點數大於玩家 莊家勝利" << endl;
+			lose();
+		}
+		else if (getPPoint() == getDPoint()) {
+			cout << "玩家點數等於莊家 和局" << endl;
+			tie();
+		}
+	}
+	else if (getPPoint() > 21 && getDPoint() <= 21) {
+		cout << "玩家爆牌 莊家勝利" << endl;
+		lose();
+	}
+	else if (getPPoint() <= 21 && getDPoint() > 21) {
+		cout << "莊家爆牌 玩家勝利" << endl;
+		win();
+	}
+	else if (getPPoint() > 21 && getDPoint() > 21) {
+		cout << "雙方爆牌 和局" << endl;
+		tie();
+	}
 }
 
 void Game::win() {
+	cout << money << "->";
 	money += bet * odds;
+	cout << money << endl;
+	system("pause");
+}
+
+void Game::tie() {
+	cout << money << "->" << money << endl;
+	system("pause");
 }
 
 void Game::lose() {
+	cout << money << "->";
 	money -= bet * odds;
-
-	if (money <= 0) {
-		cout << "賭資歸零，遊戲結束"<<endl;
-
-	}
+	cout << money << endl;
+	system("pause");
 }
 
 void Game::setMoney(long long money) {

@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.5.1 - Game.h
+//BlackJack(OOP) 0.6.0 - Game.h
 #ifndef G_H
 #define G_H
 #include "Deck.h"
@@ -6,15 +6,19 @@ using namespace std;
 class Game {
 public:
 	Game();
-	Game(int, int, double);
+	Game(int, double);
 	void play();
+	void reRound();
 	void reset();
 	void prepareRound();
 	void Shuffle();
 	void playerRound();
 	void dealerRound();
-	void getPoint();
+	int getPPoint();
+	int getDPoint();
+	void compare();
 	void win();
+	void tie();
 	void lose();
 	void setMoney(long long);
 	void setBet(long long);
@@ -27,7 +31,7 @@ private:
 	static int Pgot;
 	static int Dgot;
 	Deck deck;
-	long long money;	//當前持有賭資
+	long long money=1000000;	//當前持有賭資
 	long long bet;	//賭金
 	double odds;	//賠率
 };

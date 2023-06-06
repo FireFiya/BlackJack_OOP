@@ -1,24 +1,8 @@
-//BlackJack(OOP) 0.5.1 - Deck.cpp
+//BlackJack(OOP) 0.6.0 - Deck.cpp
 #include "Deck.h"
 
 Deck::Deck() {
     setCards(createDeck());
-
-
-    /*for (int i = 0; i < 52; i++) {
-        (cards+i)->print();
-        cout << endl;
-    }   //測試用 可刪除
-
-    srand(time(NULL));
-    Shuffle();
-    cout << endl;
-    cout << endl;
-    for (int i = 0; i < 52; i++) {
-        sleep_for(chrono::milliseconds(100));
-        (cards + i)->print();
-        cout << endl;
-    }   //測試用 可刪除*/
 }
 
 void Deck::Shuffle() {
@@ -62,7 +46,7 @@ void Deck::givePCard(int pos, int c) {
     player[pos] = cards[c];
 }
 
-void Deck::giveDCard(int c, int pos) {
+void Deck::giveDCard(int pos, int c) {
     dealer[pos] = cards[c];
 }
 
