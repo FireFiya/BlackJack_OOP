@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.4.0 - Card.cpp
+//BlackJack(OOP) 0.5.0 - Card.cpp
 #include "Card.h"
 
 Card::Card() {

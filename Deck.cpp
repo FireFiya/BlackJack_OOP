@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.4.0 - Deck.cpp
+//BlackJack(OOP) 0.5.0 - Deck.cpp
 #include "Deck.h"
 
 Deck::Deck() {
@@ -23,18 +23,11 @@ Deck::Deck() {
 
 void Deck::Shuffle() {
     srand(time(0));
-    for (int i = 0; i < 3;i++) {
-        cout << "¬~µP¤¤......" << 3 - i << endl << endl;
-        sleep_for(chrono::milliseconds(1000));
-    }
+
     for (int i = 0; i < 1000; ++i) {
         int j = rand() % DECK_SIZE;
         swapByReference(cards[i % DECK_SIZE], cards[j]);
     }
-    cout << "§¹¦¨";
-
-    sleep_for(chrono::milliseconds(1000));
-    system("cls");
 }
 
 void Deck::swapByReference(Card& card1, Card& card2) {
