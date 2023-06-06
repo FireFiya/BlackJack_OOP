@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.3.3 - Deck.h
+//BlackJack(OOP) 0.3.4 - Deck.h
 #ifndef D_H
 #define D_H
 #include "Card.h"
