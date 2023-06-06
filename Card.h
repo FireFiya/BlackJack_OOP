@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.3.4 - Card.h
+//BlackJack(OOP) 0.4.0 - Card.h
 #ifndef C_H
 #define C_H
 #include<iostream>
@@ -19,7 +19,7 @@ public:
     void setCard(double);
     double getCard()const;
 private:
-    vector<string> St = { "æ¢…èŠ±", "æ–¹å¡Š", "æ„›å¿ƒ", "é»‘æ¡ƒ" };
+    vector<string> St = { "±öªá", "¤è¶ô", "·R¤ß", "¶Â®ç" };
     vector<string> Sl = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
     double card;
 };

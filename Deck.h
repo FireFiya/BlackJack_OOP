@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.3.4 - Deck.h
+//BlackJack(OOP) 0.4.0 - Deck.h
 #ifndef D_H
 #define D_H
 #include "Card.h"
@@ -10,6 +10,8 @@ public:
     Card* createDeck();
     Card* getPlayer();
     Card* getDealer();
+    void givePCard(int, int);
+    void giveDCard(int, int);
     void setPlayer(Card*);
     void setDealer(Card*);
     void setCards(Card*);

@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.3.4 - Deck.cpp
+//BlackJack(OOP) 0.4.0 - Deck.cpp
 #include "Deck.h"
 
 Deck::Deck() {
@@ -8,7 +8,7 @@ Deck::Deck() {
     /*for (int i = 0; i < 52; i++) {
         (cards+i)->print();
         cout << endl;
-    }   //æ¸¬è©¦ç”¨ å¯åˆªé™¤
+    }   //´ú¸Õ¥Î ¥i§R°£
 
     srand(time(NULL));
     Shuffle();
@@ -18,22 +18,23 @@ Deck::Deck() {
         sleep_for(chrono::milliseconds(100));
         (cards + i)->print();
         cout << endl;
-    }   //æ¸¬è©¦ç”¨ å¯åˆªé™¤*/
+    }   //´ú¸Õ¥Î ¥i§R°£*/
 }
 
 void Deck::Shuffle() {
     srand(time(0));
     for (int i = 0; i < 3;i++) {
-        cout << "æ´—ç‰Œä¸­......" << 3 - i << endl << endl;
+        cout << "¬~µP¤¤......" << 3 - i << endl << endl;
         sleep_for(chrono::milliseconds(1000));
     }
-    cout << "å®Œæˆ";
-    sleep_for(chrono::milliseconds(1000));
-    system("cls");
     for (int i = 0; i < 1000; ++i) {
         int j = rand() % DECK_SIZE;
         swapByReference(cards[i % DECK_SIZE], cards[j]);
     }
+    cout << "§¹¦¨";
+
+    sleep_for(chrono::milliseconds(1000));
+    system("cls");
 }
 
 void Deck::swapByReference(Card& card1, Card& card2) {
@@ -44,11 +45,15 @@ void Deck::swapByReference(Card& card1, Card& card2) {
 
 Card* Deck::createDeck() {
     Card* deck = new Card[DECK_SIZE];
+    player = new Card[5];
+    dealer = new Card[5];
+
     for (int i = 1; i < 14; i++) {
         for (int j = 1; j < 5; j++) {
             deck[(i - 1) * 4 + (j - 1)] = i * 1.0 + j * 0.1;
         }
     }
+
     return deck;
 }
 
@@ -59,6 +64,15 @@ Card* Deck::getPlayer() {
 Card* Deck::getDealer() {
     return dealer;
 }
+
+void Deck::givePCard(int pos, int c) {
+    player[pos] = cards[c];
+}
+
+void Deck::giveDCard(int c, int pos) {
+    dealer[pos] = cards[c];
+}
+
 
 void Deck::setPlayer(Card* player) {
     this->player = player;

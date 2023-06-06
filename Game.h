@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.3.4 - Game.h
+//BlackJack(OOP) 0.4.0 - Game.h
 #ifndef G_H
 #define G_H
 #include "Deck.h"
@@ -10,7 +10,7 @@ public:
 	void play();
 	void restart();
 	void reset();
-	void statusOutput()const;
+	void prepareRound();
 	void Shuffle();
 	void playerRound();
 	void dealerRound();
@@ -24,9 +24,11 @@ public:
 	double getOdds()const;
 private:
 	static int cardUsed;
+	static int Pgot;
+	static int Dgot;
 	Deck deck;
-	long long money;	//ç•¶å‰æŒæœ‰è³­è³‡
-	long long bet;	//è³­é‡‘
-	double odds;	//è³ ç‡
+	long long money;	//·í«e«ù¦³½ä¸ê
+	long long bet;	//½äª÷
+	double odds;	//½ß²v
 };
 #endif

@@ -1,7 +1,9 @@
-//BlackJack(OOP) 0.3.4 - Game.cpp
+//BlackJack(OOP) 0.4.0 - Game.cpp
 #include "Game.h"
 
 int Game::cardUsed = 0;
+int Game::Pgot = 0;
+int Game::Dgot = 0;
 
 Game::Game() {
 	this->money = 0;
@@ -19,28 +21,28 @@ void Game::play() {
 	long long money, bet;
 	double odds;
 
-	cout << "æ­¡è¿Žä¾†åˆ°21é»ž" << endl;
-	cout << "è«‹è¼¸å…¥è³­è³‡ï¼š" << endl;
+	cout << "Åwªï¨Ó¨ì21ÂI" << endl;
+	cout << "½Ð¿é¤J½ä¸ê¡G" << endl;
 	cin >> money;
 	system("cls");
 
-	cout << "è«‹é¸æ“‡è³ çŽ‡(1.2, 1.5, 3.0):" << endl;
+	cout << "½Ð¿ï¾Ü½ß²v(1.2, 1.5, 3.0):" << endl;
 	cin >> odds;
 	while (odds != 1.2 || odds != 1.5 || odds != 3.0) {
 		if (odds == 1.2 || odds == 1.5 || odds == 3.0) {
 			break;
 		}
 		system("cls");
-		cout << "è³ çŽ‡ä¸æ­£ç¢ºï¼Œè«‹é‡æ–°é¸æ“‡è³ çŽ‡(1.2, 1.5, 3.0):" << endl;
+		cout << "½ß²v¤£¥¿½T¡A½Ð­«·s¿ï¾Ü½ß²v(1.2, 1.5, 3.0):" << endl;
 		cin >> odds;
 	}
 	system("cls");
 
-	cout << "è«‹è¼¸å…¥è³­é‡‘ï¼š" << endl;
+	cout << "½Ð¿é¤J½äª÷¡G" << endl;
 	cin >> bet;
 	while (bet>money) {
 		system("cls");
-		cout << "è³­è³‡ä¸è¶³ï¼Œè«‹é‡æ–°è¼¸å…¥è³­é‡‘ï¼š" << endl;
+		cout << "½ä¸ê¤£¨¬¡A½Ð­«·s¿é¤J½äª÷¡G" << endl;
 		cin >> bet;
 	}
 	system("cls");
@@ -50,23 +52,30 @@ void Game::play() {
 	setBet(bet);
 }
 
-void Game::restart() {//å…¨éƒ¨é‡ä¾†
+void Game::restart() {//¥þ³¡­«¨Ó
 
 }
 
-void Game::reset() {//é‡ç½®å¡ç‰Œ
+void Game::reset() {//­«¸m¥dµP
 	cardUsed = 0;
 	Deck deck;
 	this->deck = deck;
 }
 
-void Game::statusOutput()const {
+void Game::prepareRound() {
+	for (int i = 0; i < 2; i++) {
+		deck.giveDCard(Dgot, cardUsed);
+		Dgot++;
+		cardUsed++;
 
+		deck.givePCard(Pgot, cardUsed);
+		Pgot++;
+		cardUsed++;
+	}
 }
 
 void Game::Shuffle() {
 	deck.Shuffle();
-
 }
 
 void Game::playerRound() {
