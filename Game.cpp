@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.3.3 - Game.cpp
+//BlackJack(OOP) 0.3.4 - Game.cpp
 #include "Game.h"
 
 int Game::cardUsed = 0;
@@ -19,35 +19,30 @@ void Game::play() {
 	long long money, bet;
 	double odds;
 
-	cout << "Åwªï¨Ó¨ì21ÂI" << endl;
-	cout << "½Ð¿é¤J½ä¸ê¡G" << endl;
+	cout << "æ­¡è¿Žä¾†åˆ°21é»ž" << endl;
+	cout << "è«‹è¼¸å…¥è³­è³‡ï¼š" << endl;
 	cin >> money;
-	sleep_for(chrono::milliseconds(1000));
 	system("cls");
 
-	cout << "½Ð¿ï¾Ü½ß²v(1.2, 1.5, 3.0):" << endl;
+	cout << "è«‹é¸æ“‡è³ çŽ‡(1.2, 1.5, 3.0):" << endl;
 	cin >> odds;
 	while (odds != 1.2 || odds != 1.5 || odds != 3.0) {
 		if (odds == 1.2 || odds == 1.5 || odds == 3.0) {
 			break;
 		}
-		sleep_for(chrono::milliseconds(1000));
 		system("cls");
-		cout << "½ß²v¤£¥¿½T¡A½Ð­«·s¿ï¾Ü½ß²v(1.2, 1.5, 3.0):" << endl;
+		cout << "è³ çŽ‡ä¸æ­£ç¢ºï¼Œè«‹é‡æ–°é¸æ“‡è³ çŽ‡(1.2, 1.5, 3.0):" << endl;
 		cin >> odds;
 	}
-	sleep_for(chrono::milliseconds(1000));
 	system("cls");
 
-	cout << "½Ð¿é¤J½äª÷¡G" << endl;
+	cout << "è«‹è¼¸å…¥è³­é‡‘ï¼š" << endl;
 	cin >> bet;
 	while (bet>money) {
-		sleep_for(chrono::milliseconds(1000));
 		system("cls");
-		cout << "½ä¸ê¤£¨¬¡A½Ð­«·s¿é¤J½äª÷¡G" << endl;
+		cout << "è³­è³‡ä¸è¶³ï¼Œè«‹é‡æ–°è¼¸å…¥è³­é‡‘ï¼š" << endl;
 		cin >> bet;
 	}
-	sleep_for(chrono::milliseconds(1000));
 	system("cls");
 
 	setMoney(money);
@@ -55,15 +50,22 @@ void Game::play() {
 	setBet(bet);
 }
 
-void Game::restart() {//¥þ³¡­«¨Ó
+void Game::restart() {//å…¨éƒ¨é‡ä¾†
 
 }
 
-void Game::reset() {//­«¸m¥dµP
-
+void Game::reset() {//é‡ç½®å¡ç‰Œ
+	cardUsed = 0;
+	Deck deck;
+	this->deck = deck;
 }
 
 void Game::statusOutput()const {
+
+}
+
+void Game::Shuffle() {
+	deck.Shuffle();
 
 }
 
