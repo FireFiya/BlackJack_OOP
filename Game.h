@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.5.0 - Game.h
+//BlackJack(OOP) 0.5.1 - Game.h
 #ifndef G_H
 #define G_H
 #include "Deck.h"
@@ -13,6 +13,7 @@ public:
 	void Shuffle();
 	void playerRound();
 	void dealerRound();
+	void getPoint();
 	void win();
 	void lose();
 	void setMoney(long long);

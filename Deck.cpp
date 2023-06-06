@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.5.0 - Deck.cpp
+//BlackJack(OOP) 0.5.1 - Deck.cpp
 #include "Deck.h"
 
 Deck::Deck() {

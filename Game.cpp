@@ -1,4 +1,4 @@
-﻿//BlackJack(OOP) 0.5.0 - Game.cpp
+﻿//BlackJack(OOP) 0.5.1 - Game.cpp
 #include "Game.h"
 
 int Game::cardUsed = 0;
@@ -74,7 +74,7 @@ void Game::prepareRound() {
 
 void Game::Shuffle() {
 	for (int i = 0; i < 3; i++) {
-		cout << "洗牌中......" << 3 - i << endl << endl;
+		cout << "洗牌中......" << 3 - i << endl;
 		sleep_for(chrono::milliseconds(1000));
 	}
 
@@ -86,44 +86,22 @@ void Game::Shuffle() {
 }
 
 void Game::playerRound() {
-	cout << "莊家的明牌:" << endl;
-	deck.getDealer()->print();
-	cout << endl;
-
-	cout << "你目前的手牌:" << endl;
-	for (int i = 0; i < Pgot; i++) {
-		(deck.getPlayer() + i)->print();
-	}
-	cout << endl;
-	
 	string ans = "Y";
+	
 	while (ans == "Y" && Pgot != 5) {
+		cout << "莊家的明牌:" << endl;
+		deck.getDealer()->print();
+		cout << endl;
+
+		cout << "你目前的手牌:" << endl;
+		for (int i = 0; i < Pgot; i++) {
+			(deck.getPlayer() + i)->print();
+		}
+		cout << endl;
+
 		cout << "是否需要取得新卡片(Y/N):" << endl;
 		cin >> ans;
 		system("cls");
-
-		while (ans != "Y" && ans != "N") {
-			system("cls");
-
-			cout << "莊家的明牌:" << endl;
-			deck.getDealer()->print();
-			cout << endl;
-
-			cout << "你目前的手牌:" << endl;
-			for (int i = 0; i < Pgot; i++) {
-				(deck.getPlayer() + i)->print();
-			}
-			cout << endl;
-			cout << "是否需要取得新卡片(Y/N):" << endl;
-			cin >> ans;
-
-			if (ans == "Y") {
-				continue;
-			}
-			else if (ans == "N") {
-				break;
-			}
-		}
 
 		if (ans == "Y") {
 			deck.givePCard(Pgot, cardUsed);
@@ -133,10 +111,26 @@ void Game::playerRound() {
 		else if (ans == "N") {
 			break;
 		}
+		else {
+			ans = "Y";
+		}
 	}
+	cout << "莊家的明牌:" << endl;
+	deck.getDealer()->print();
+	cout << endl;
+
+	cout << "你目前的手牌:" << endl;
+	for (int i = 0; i < Pgot; i++) {
+		(deck.getPlayer() + i)->print();
+	}
+	system("pause");
 }
 
 void Game::dealerRound() {
+
+}
+
+void Game::getPoint() {
 
 }
 
