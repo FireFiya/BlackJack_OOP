@@ -1,4 +1,4 @@
-//BlackJack(OOP) 0.6.0 - main.cpp
+//BlackJack(OOP) 1.0.1 - main.cpp
 #include "Game.h"
 int main() {
 	Game game;

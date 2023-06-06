@@ -1,4 +1,4 @@
-﻿//BlackJack(OOP) 0.6.0 - Game.cpp
+﻿//BlackJack(OOP) 1.0.1 - Game.cpp
 #include "Game.h"
 
 int Game::cardUsed = 0;
@@ -362,7 +362,7 @@ void Game::tie() {
 
 void Game::lose() {
 	cout << money << "->";
-	money -= bet * odds;
+	money -= bet;
 	cout << money << endl;
 	system("pause");
 }
