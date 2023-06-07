@@ -1,4 +1,4 @@
-﻿//BlackJack(OOP) 1.0.3 - Game.cpp
+﻿//BlackJack(OOP) 1.0.4 - Game.cpp
 #include "Game.h"
 
 int Game::cardUsed = 0;
@@ -188,6 +188,8 @@ void Game::dealerRound() {
 }
 
 void Game::compare() {
+	cout << "莊家的點數: " << getDPoint() << endl;
+	cout << "你的點數: " << getPPoint() << endl << endl;
 	if (getPPoint() <= 21 && getDPoint() <= 21) {
 		if (getPPoint() > getDPoint()) {
 			cout << "玩家點數大於莊家 玩家勝利" << endl;
