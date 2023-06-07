@@ -1,4 +1,4 @@
-//BlackJack(OOP) 1.0.1 - Card.h
+//BlackJack(OOP) 1.0.3 - Card.h
 #ifndef C_H
 #define C_H
 #include<iostream>

@@ -1,4 +1,4 @@
-//BlackJack(OOP) 1.0.1 - Game.h
+//BlackJack(OOP) 1.0.3 - Game.h
 #ifndef G_H
 #define G_H
 #include "Deck.h"
@@ -6,20 +6,19 @@ using namespace std;
 class Game {
 public:
 	Game();
-	Game(int, double);
 	void play();
-	void reRound();
-	void reset();
 	void prepareRound();
 	void Shuffle();
 	void playerRound();
 	void dealerRound();
-	int getPPoint();
-	int getDPoint();
 	void compare();
 	void win();
 	void tie();
 	void lose();
+	void reRound();
+	void reset();
+	int getPPoint();
+	int getDPoint();
 	void setMoney(long long);
 	void setBet(long long);
 	void setOdds(double);

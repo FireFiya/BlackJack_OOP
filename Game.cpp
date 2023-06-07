@@ -1,4 +1,4 @@
-﻿//BlackJack(OOP) 1.0.1 - Game.cpp
+﻿//BlackJack(OOP) 1.0.3 - Game.cpp
 #include "Game.h"
 
 int Game::cardUsed = 0;
@@ -8,11 +8,6 @@ int Game::Dgot = 0;
 Game::Game() {
 	this->bet = 0;
 	this->odds = 0;
-}
-
-Game::Game(int bet,double odds) {
-	this->bet = bet;
-	this->odds = odds;
 }
 
 void Game::play() {
@@ -49,25 +44,6 @@ void Game::play() {
 
 	setOdds(odds);
 	setBet(bet);
-}
-
-void Game::reRound() {
-	Pgot = 0;
-	Dgot = 0;
-	cardUsed = 0;
-	Deck deck;
-	this->deck = deck;
-}
-
-void Game::reset() {//重置
-	setMoney(1000000);
-	setBet(0);
-	setOdds(0);
-	Pgot = 0;
-	Dgot = 0;
-	cardUsed = 0;
-	Deck deck;
-	this->deck = deck;
 }
 
 void Game::prepareRound() {
@@ -211,6 +187,73 @@ void Game::dealerRound() {
 	system("cls");
 }
 
+void Game::compare() {
+	if (getPPoint() <= 21 && getDPoint() <= 21) {
+		if (getPPoint() > getDPoint()) {
+			cout << "玩家點數大於莊家 玩家勝利" << endl;
+			win();
+		}
+		else if (getPPoint() < getDPoint()) {
+			cout << "莊家點數大於玩家 莊家勝利" << endl;
+			lose();
+		}
+		else if (getPPoint() == getDPoint()) {
+			cout << "玩家點數等於莊家 和局" << endl;
+			tie();
+		}
+	}
+	else if (getPPoint() > 21 && getDPoint() <= 21) {
+		cout << "玩家爆牌 莊家勝利" << endl;
+		lose();
+	}
+	else if (getPPoint() <= 21 && getDPoint() > 21) {
+		cout << "莊家爆牌 玩家勝利" << endl;
+		win();
+	}
+	else if (getPPoint() > 21 && getDPoint() > 21) {
+		cout << "雙方爆牌 和局" << endl;
+		tie();
+	}
+}
+
+void Game::win() {
+	cout << money << "->";
+	money += bet * odds;
+	cout << money << endl;
+	system("pause");
+}
+
+void Game::tie() {
+	cout << money << "->" << money << endl;
+	system("pause");
+}
+
+void Game::lose() {
+	cout << money << "->";
+	money -= bet;
+	cout << money << endl;
+	system("pause");
+}
+
+void Game::reRound() {
+	Pgot = 0;
+	Dgot = 0;
+	cardUsed = 0;
+	Deck deck;
+	this->deck = deck;
+}
+
+void Game::reset() {//重置
+	setMoney(1000000);
+	setBet(0);
+	setOdds(0);
+	Pgot = 0;
+	Dgot = 0;
+	cardUsed = 0;
+	Deck deck;
+	this->deck = deck;
+}
+
 int Game::getPPoint() {
 	int total = 0;
 	int special = 0;
@@ -317,54 +360,6 @@ int Game::getDPoint() {
 		}
 	}
 	return total;
-}
-
-void Game::compare() {
-	if (getPPoint() <= 21 && getDPoint() <= 21) {
-		if (getPPoint() > getDPoint()) {
-			cout << "玩家點數大於莊家 玩家勝利" << endl;
-			win();
-		}
-		else if (getPPoint() < getDPoint()) {
-			cout << "莊家點數大於玩家 莊家勝利" << endl;
-			lose();
-		}
-		else if (getPPoint() == getDPoint()) {
-			cout << "玩家點數等於莊家 和局" << endl;
-			tie();
-		}
-	}
-	else if (getPPoint() > 21 && getDPoint() <= 21) {
-		cout << "玩家爆牌 莊家勝利" << endl;
-		lose();
-	}
-	else if (getPPoint() <= 21 && getDPoint() > 21) {
-		cout << "莊家爆牌 玩家勝利" << endl;
-		win();
-	}
-	else if (getPPoint() > 21 && getDPoint() > 21) {
-		cout << "雙方爆牌 和局" << endl;
-		tie();
-	}
-}
-
-void Game::win() {
-	cout << money << "->";
-	money += bet * odds;
-	cout << money << endl;
-	system("pause");
-}
-
-void Game::tie() {
-	cout << money << "->" << money << endl;
-	system("pause");
-}
-
-void Game::lose() {
-	cout << money << "->";
-	money -= bet;
-	cout << money << endl;
-	system("pause");
 }
 
 void Game::setMoney(long long money) {
