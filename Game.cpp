@@ -1,4 +1,4 @@
-﻿//BlackJack(OOP) 1.0.4 - Game.cpp
+﻿//BlackJack(OOP) 1.1.0 - Game.cpp
 #include "Game.h"
 
 int Game::cardUsed = 0;
