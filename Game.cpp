@@ -129,7 +129,7 @@ void Game::dealerRound() {
 	system("pause");
 	system("cls");
 
-	if (getPPoint() >= 21) {
+	if (getPPoint() > 21) {
 		while (getDPoint() < 17 && Dgot != 5) {
 			deck.giveDCard(Dgot, cardUsed);
 			Dgot++;
@@ -150,7 +150,7 @@ void Game::dealerRound() {
 			system("cls");
 		}
 	}
-	else if (getPPoint() < 21) {
+	else if (getPPoint() <= 21) {
 		while (getPPoint() > getDPoint() && Dgot != 5 || getDPoint() < 17) {
 			deck.giveDCard(Dgot, cardUsed);
 			Dgot++;
@@ -260,51 +260,18 @@ int Game::getPPoint() {
 	int total = 0;
 	int special = 0;
 	for (int i = 0; i < Pgot; i++) {
-		if ((deck.getPlayer() + i)->getSymbol() == "A") {
-			total += 11;
+		if ((deck.getPlayer() + i)->getPoint() == 11) {
+			total += (deck.getPlayer() + i)->getPoint();
 			special++;
 		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "2") {
-			total += 2;
+		else {
+			total += (deck.getPlayer() + i)->getPoint();
 		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "3") {
-			total += 3;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "4") {
-			total += 4;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "5") {
-			total += 5;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "6") {
-			total += 6;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "7") {
-			total += 7;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "8") {
-			total += 8;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "9") {
-			total += 9;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "10") {
-			total += 10;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "J") {
-			total += 10;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "Q") {
-			total += 10;
-		}
-		else if ((deck.getPlayer() + i)->getSymbol() == "K") {
-			total += 10;
-		}
+	}
 
-		for (int i = 0; i < special; i++) {
-			if (total > 21) {
-				total -= 10;
-			}
+	for (int i = 0; i < special; i++) {
+		if (total > 21) {
+			total -= 10;
 		}
 	}
 	return total;
@@ -314,51 +281,18 @@ int Game::getDPoint() {
 	int total = 0;
 	int special = 0;
 	for (int i = 0; i < Dgot; i++) {
-		if ((deck.getDealer() + i)->getSymbol() == "A") {
-			total += 11;
+		if ((deck.getDealer() + i)->getPoint() == 11) {
+			total += (deck.getDealer() + i)->getPoint();
 			special++;
 		}
-		else if ((deck.getDealer() + i)->getSymbol() == "2") {
-			total += 2;
+		else {
+			total += (deck.getDealer() + i)->getPoint();
 		}
-		else if ((deck.getDealer() + i)->getSymbol() == "3") {
-			total += 3;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "4") {
-			total += 4;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "5") {
-			total += 5;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "6") {
-			total += 6;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "7") {
-			total += 7;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "8") {
-			total += 8;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "9") {
-			total += 9;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "10") {
-			total += 10;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "J") {
-			total += 10;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "Q") {
-			total += 10;
-		}
-		else if ((deck.getDealer() + i)->getSymbol() == "K") {
-			total += 10;
-		}
+	}
 
-		for (int i = 0; i < special; i++) {
-			if (total > 21) {
-				total -= 10;
-			}
+	for (int i = 0; i < special; i++) {
+		if (total > 21) {
+			total -= 10;
 		}
 	}
 	return total;

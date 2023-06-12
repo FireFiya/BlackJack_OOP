@@ -19,7 +19,9 @@ public:
     void print()const;
     void setCard(double);
     double getCard()const;
+    int getPoint()const;
 private:
+    vector<int> Pt = { 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
     vector<string> St = { "梅花", "方塊", "愛心", "黑桃" };
     vector<string> Sl = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
     double card;

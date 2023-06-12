@@ -28,3 +28,7 @@ void Card::setCard(double card) {
 double Card::getCard()const {
 	return card;
 }
+
+int Card::getPoint()const {
+	return Pt[int(card) - 1];
+}
